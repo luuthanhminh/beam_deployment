@@ -19,24 +19,7 @@ spec:
 
     # helm specific config
     helm:
-      # Release name override (defaults to application name)
-      releaseName: react-app
-      parameters:
-        - name: "replicaCount"
-          value: {{ .Values.replicaCount | quote }}
-        - name: "image.repository" 
-          value:  {{ .Values.image.repository }}
-        - name: "image.tag" 
-          value:  {{ .Values.image.tag }}
-
-      # Helm values files for overriding values in the helm chart
-      # The path is relative to the spec.source.path directory defined above
-      valueFiles:
-      - values.yaml
-
-      # Optional Helm version to template with. If omitted it will fall back to look at the 'apiVersion' in Chart.yaml
-      # and decide which Helm binary to use automatically. This field can be either 'v2' or 'v3'.
-      version: v1
+      values: {{ toYaml .Values.source.helm.values | toString | indent 6 }}
 
   # Destination cluster and namespace to deploy the application
   destination:
