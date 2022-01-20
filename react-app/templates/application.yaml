@@ -14,7 +14,7 @@ spec:
   # Source of the application manifests
   source:
     repoURL: https://github.com/luuthanhminh/beam_ops
-    targetRevision: master
+    targetRevision: HEAD
     path: charts/react-app
 
     # helm specific config
