@@ -17,10 +17,9 @@ spec:
     targetRevision: HEAD
     path: charts/react-app
 
-    # helm specific config
     helm:
       valueFiles:
-      - test-values.yaml
+      - values-prod.yaml
 
   # Destination cluster and namespace to deploy the application
   destination:
