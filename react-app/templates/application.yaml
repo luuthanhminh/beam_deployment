@@ -23,13 +23,11 @@ spec:
       releaseName: react-app
       parameters:
         - name: "replicaCount"
-          value: "2"
-          forceString: true
-
-      # Helm values files for overriding values in the helm chart
-      # The path is relative to the spec.source.path directory defined above
-      valueFiles:
-      - values.yaml
+          value: {{ .Values.replicaCount }}
+        - name: "image.repository" 
+          value:  {{ .Values.image.repository }}
+        - name: "image.tag" 
+          value:  {{ .Values.image.tag }}
 
       # Optional Helm version to template with. If omitted it will fall back to look at the 'apiVersion' in Chart.yaml
       # and decide which Helm binary to use automatically. This field can be either 'v2' or 'v3'.
