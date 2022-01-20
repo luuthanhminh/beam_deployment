@@ -23,8 +23,7 @@ spec:
       releaseName: react-app
       parameters:
         - name: "replicaCount"
-          value: 2
-          forceString: true
+          value: "2"
 
       # Helm values files for overriding values in the helm chart
       # The path is relative to the spec.source.path directory defined above
