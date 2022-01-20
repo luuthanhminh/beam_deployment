@@ -19,7 +19,8 @@ spec:
 
     # helm specific config
     helm:
-      values: {{ toYaml .Values.source.helm.values | toString | indent 6 }}
+      valueFiles:
+      - test-values.yaml
 
   # Destination cluster and namespace to deploy the application
   destination:
