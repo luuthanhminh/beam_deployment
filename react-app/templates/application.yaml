@@ -29,9 +29,6 @@ spec:
         - name: "image.tag" 
           value:  {{ .Values.image.tag }}
 
-      # Release name override (defaults to application name)
-      releaseName: react-app-1
-
       # Helm values files for overriding values in the helm chart
       # The path is relative to the spec.source.path directory defined above
       valueFiles:
