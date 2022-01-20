@@ -23,7 +23,7 @@ spec:
       releaseName: react-app
       parameters:
         - name: "replicaCount"
-          value: {{ .Values.replicaCount }}
+          value: {{ .Values.replicaCount | quote }}
         - name: "image.repository" 
           value:  {{ .Values.image.repository }}
         - name: "image.tag" 
