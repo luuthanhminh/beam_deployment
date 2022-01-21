@@ -18,8 +18,9 @@ spec:
     path: charts/react-app
 
     helm:
+      
       valueFiles:
-      - values-prod.yaml
+      - values.yaml
 
   # Destination cluster and namespace to deploy the application
   destination:
