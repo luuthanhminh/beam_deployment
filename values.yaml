@@ -9,6 +9,7 @@ spec:
   env: "demo"
   baseHost: beam.to
   storageClassName: efs-sc
+  efsVolumeClaim: beam-efs-pvc
 applications:
   reactApp:
     image:

@@ -3,7 +3,6 @@ kind: Application
 metadata:
   name: mixer-nginx
   # You'll usually want to add your resources to the argocd namespace.
-  namespace: {{ .Values.spec.namespace }}
   # Add a this finalizer ONLY if you want these to cascade delete.
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -18,6 +17,10 @@ spec:
     repoURL: {{ .Values.spec.source.repoURL }}
     targetRevision: {{ .Values.spec.source.targetRevision }}
     path: charts/mixer-nginx
+    helm:
+      parameters:
+      - name: "efsVolumeClaim"
+        value: {{ .Values.spec.efsVolumeClaim }}
 
   # Destination cluster and namespace to deploy the application
   destination:

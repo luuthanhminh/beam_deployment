@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: beam-efs-pvc
+  name: {{ .Values.spec.efsVolumeClaim }}
   namespace: {{ .Values.spec.namespace }}
   annotations:
     argocd.argoproj.io/sync-wave: "1"
