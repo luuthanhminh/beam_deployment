@@ -4,8 +4,8 @@ spec:
     server: https://kubernetes.default.svc
   source:
     repoURL: https://github.com/luuthanhminh/beam_ops
-    targetRevision: HEAD
-  namespace: "service"
+    targetRevision: master
+  namespace: "services"
   env: "demo"
   baseHost: beam.to
   storageClassName: efs-sc
