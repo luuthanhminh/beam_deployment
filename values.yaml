@@ -14,8 +14,8 @@ applications:
   reactApp:
     image:
       repository: 462068371076.dkr.ecr.eu-west-2.amazonaws.com/beam/react-app
-      tag: "demo-10"
+      tag: "demo-11"
   serverApi:
     image:
       repository: 462068371076.dkr.ecr.eu-west-2.amazonaws.com/beam/server-api
-      tag: "demo-13"
+      tag: "demo-14"
