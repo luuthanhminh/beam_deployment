@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mixer-nginx
+  # You'll usually want to add your resources to the argocd namespace.
+  namespace: {{ .Values.spec.namespace }}
+  # Add a this finalizer ONLY if you want these to cascade delete.
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  annotations:
+    argocd.argoproj.io/sync-wave: "12"
+spec:
+  # The project the application belongs to.
+  project: default
+
+  # Source of the application manifests
+  source:
+    repoURL: {{ .Values.spec.source.repoURL }}
+    targetRevision: {{ .Values.spec.source.targetRevision }}
+    path: charts/mixer-nginx
+
+  # Destination cluster and namespace to deploy the application
+  destination:
+    server: {{ .Values.spec.destination.server }}
+    namespace: {{ .Values.spec.namespace }}
+
+  syncPolicy:
+    automated: {}

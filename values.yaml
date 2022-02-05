@@ -1,0 +1,20 @@
+name: "beam"
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/luuthanhminh/beam_ops
+    targetRevision: HEAD
+  namespace: "service"
+  env: "demo"
+  baseHost: beam.to
+  storageClassName: efs-sc
+applications:
+  reactApp:
+    image:
+      repository: 462068371076.dkr.ecr.eu-west-2.amazonaws.com/beam/react-app
+      tag: "demo-10"
+  serverApi:
+    image:
+      repository: 462068371076.dkr.ecr.eu-west-2.amazonaws.com/beam/server-api
+      tag: "demo-13"
