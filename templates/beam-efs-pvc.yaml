@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: {{ .Values.spec.efsVolumeClaim }}
+  name: "{{ printf "%s-%s" .Values.spec.efsVolumeClaim .Values.spec.env }}"
   namespace: {{ .Values.spec.namespace }}
   annotations:
     argocd.argoproj.io/sync-wave: "1"
@@ -11,4 +11,4 @@ spec:
   storageClassName: {{ .Values.spec.storageClassName }}
   resources:
     requests:
-      storage: 20Gi
+      storage: 10Gi

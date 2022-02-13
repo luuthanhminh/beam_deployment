@@ -21,20 +21,20 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: server-api
+                name: "{{ printf "%s-%s" "server-api" .Values.spec.env }}" 
                 port:
                   number: 80
           - path: /upload/
             pathType: Prefix
             backend:
               service:
-                name: mixer-nginx
+                name: "{{ printf "%s-%s" "mixer-nginx" .Values.spec.env }}" 
                 port:
                   number: 80
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: react-app
+                name: "{{ printf "%s-%s" "react-app" .Values.spec.env }}"
                 port:
                   number: 80
