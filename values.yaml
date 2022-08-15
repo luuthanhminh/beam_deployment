@@ -1,0 +1,31 @@
+name: "beam"
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/beings-digital/beam_ops
+    targetRevision: master
+  namespace: "demo"
+  env: "demo"
+  baseHost: beam.to
+  storageClassName: efs-sc
+  efsVolumeClaim: beam-efs-pvc
+applications:
+  reactApp:
+    image:
+      repository: 462068371076.dkr.ecr.eu-west-2.amazonaws.com/beam/react-app
+      tag: "dev-13"
+    env:
+      serverOrigin: https://demo.beam.to
+  serverApi:
+    image:
+      repository: 462068371076.dkr.ecr.eu-west-2.amazonaws.com/beam/server-api
+      tag: "dev-15"
+    env:
+      serverOrigin: https://demo.beam.to
+      sqliteDbPath: /src/server-api-volume/db.sqlite3
+    db:
+      dbHost: null
+      dbUserName: null
+      dbPassword: null
+      dbDatabase: null

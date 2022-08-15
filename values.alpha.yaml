@@ -1,0 +1,31 @@
+name: beam
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/beings-digital/beam_ops
+    targetRevision: master
+  namespace: alpha
+  env: alpha
+  baseHost: beingsbeam.com
+  storageClassName: efs-sc
+  efsVolumeClaim: beam-efs-pvc
+applications:
+  reactApp:
+    image:
+      repository: 462068371076.dkr.ecr.eu-west-2.amazonaws.com/beam/react-app
+      tag: alpha-5f25346
+    env:
+      serverOrigin: https://alpha.beingsbeam.com
+  serverApi:
+    image:
+      repository: 462068371076.dkr.ecr.eu-west-2.amazonaws.com/beam/server-api
+      tag: alpha-5f25346
+    env:
+      serverOrigin: https://alpha.beingsbeam.com
+      sqliteDbPath: /src/server-api-volume/db.sqlite3
+    db:
+      dbHost: beam-dev.cluster-cdmnl78a3wef.eu-west-2.rds.amazonaws.com
+      dbUserName: beam_admin
+      dbPassword: AgC/ZLdw2MspAy2929XgiUB/LwwrMwK6jtwi9enm5LUV5WBVaJtVcrfJCiFC8SIgxv8qwoJ6QCwwTiHgDdzmL1HdfKLOGaw79tAwFjA1MBbXLlveW68KDPth7BsoV17X4lW4//njEyCru0VHVlJj6ZUj7h+iDbOp5YZuaFaGb+WNc4YRvAuluaWnyWd/mrPSI0k1O5+MhZplRyTkHi/TBDG4f9yNI0t9sOq09DGpXpeAJyD40WHJJdFtI8vKTLAqGRFi+CUKvSuzUo8EM0ZO4+u9vBIFxz+uZ3fMOEA2Ia0b0PPENFaaUbq1EjV95JRJ0MG4ONaHQd+QurZU/0IpEO3IGQd/AQ7fEhVlRDIWIqDJjTZ6h5h9i7B9cxv5zHobjy0o14IvnYFJLnhueq+YyA77rwRQSq5ncW2ZPXfz2v/1QJ14KjOn8n5QMFZ/+DQ7wR++SAVWwaFTi0V7G27QiNubJKID6srUPUPDIBiqsCERbXq6MTZABhQFeeHuX1OoHg0lwIBRTL1mA9mcD8qQaJ6+vVh7Yj96MSK8mv3btDw0OgvQC8U8Uyn0S+jE14kpgfgnNuUrT/DEysRY09zXERZ+AFbQka2JmfCOdhTUSlQVtFjiZwe6EmMfK5kt/Qw1j74ByTzsRYKG2YVnCBhv4gu4t4ESLTCN2vDBP0jP3r05w1jtygmyQ/kx5FLf4zbQKOHTYG5ATXGMJQuH6mb4yxV+HQ==
+      dbDatabase: beam-alpha-v2
